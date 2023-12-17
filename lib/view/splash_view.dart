@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:fintech/view/home-view.dart';
+import 'package:fintech/view/home_view.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {

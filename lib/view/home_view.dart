@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -8,13 +7,15 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<HomeView> {
+class _MyAppState extends State<HomeView> with SingleTickerProviderStateMixin {
   bool animate = true;
   late AnimationController controller;
+
   @override
   void initState() {
-    
     super.initState();
+    controller = AnimationController(vsync: this,duration: const Duration(seconds: 2));
+    controller.repeat();
   }
   @override
   void dispose() {
@@ -31,9 +32,7 @@ class _MyAppState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               AnimatedBuilder(animation: , builder: (context, child) {
-                 
-               },)
+             Square(),
             ],
           ),
         ),
