@@ -7,22 +7,37 @@ class HomeView extends StatefulWidget {
   @override
   State<HomeView> createState() => _MyAppState();
 }
-class _MyAppState extends State<HomeView> with SingleTickerProviderStateMixin {
+class _MyAppState extends State<HomeView> with TickerProviderStateMixin {
   bool animate = true;
-  late AnimationController controller;
-  late Animation animation;
+  late AnimationController controller1;
+  late AnimationController controller2;
+  late AnimationController controller3;
+
+  late Animation animation1;
+  late Animation animation2;
+  late Animation animation3;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(vsync: this, duration: const Duration(seconds: 5));
-    animation = Tween<double>(begin: 0.0, end: 2 * pi).animate(controller);
-    controller.repeat();
+    controller1 = AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animation1 = Tween<double>(begin: 0.0, end: 2 * pi).animate(controller1);
+    controller1.repeat();
+
+    controller2 = AnimationController(vsync: this, duration: const Duration(seconds: 5));
+    animation2 = Tween<double>(begin: 0.0, end: 2 * pi).animate(controller2);
+    controller2.repeat();
+
+    controller3 = AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    animation3 = Tween<double>(begin: 0.0, end: 2 * pi).animate(controller3);
+    controller3.repeat();
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
     super.dispose();
   }
 
@@ -34,11 +49,11 @@ class _MyAppState extends State<HomeView> with SingleTickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(child: AnimatedBuilder(
-            animation: animation, builder: (context, child) => Square(value: animation.value,))),
+            animation: animation1, builder: (context, child) => Square(value: animation1.value,))),
           Center(child: AnimatedBuilder(
-            animation: animation, builder: (context, child) => Square(value: -animation.value,))),
+            animation: animation2, builder: (context, child) => Square(value: animation2.value,))),
           Center(child: AnimatedBuilder(
-            animation: animation, builder: (context, child) => Square(value: animation.value,))),
+            animation: animation3, builder: (context, child) => Square(value: animation3.value,))),
         ],
       ),
     );
